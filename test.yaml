@@ -1,0 +1,1071 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: Rule
+log-level: info
+external-controller: 127.0.0.1:9090
+secret: 'goog123456gle'
+dns:
+    enable: true
+    ipv6: false
+    default-nameserver: [223.5.5.5, 119.29.29.29]
+    fake-ip-range: 198.18.0.1/16
+    use-hosts: true
+    fake-ip-filter:      # fakeip 过滤，以下地址不会下发 fakeip 映射用于连接，会使用真实ip（redir-host）
+      # *.baidu.com 只匹配 tieba.baidu.com 而不匹配 123.tieba.baidu.com 或者 baidu.com
+      - "+.msftconnecttest.com"   # 部署到软路由中时，用于让Windows的网络图标显示有网
+      # ＋.baidu.com 匹配 tieba.baidu.com 和 123.tieba.baidu.com 或者 baidu.com
+    nameserver: ['https://doh.pub/dns-query', 'https://dns.alidns.com/dns-query']
+    fallback: ['https://doh.dns.sb/dns-query', 'https://dns.cloudflare.com/dns-query', 'https://dns.twnic.tw/dns-query', 'tls://8.8.4.4:853']
+    fallback-filter:   # 这些域名被视为已污染，匹配到这些域名，会直接使用 fallback解析，不去使用 nameserver
+      geoip: true
+      geoip-code: CN
+      geosite:
+        - gfw
+      ipcidr:
+        - 240.0.0.0/4
+      domain:
+        - '+.google.com'
+        - '+.facebook.com'
+        - '+.youtube.com'
+proxies:
+  - {name: y2b关注Anqiqii_1,server: 103.21.244.188,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo01.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_2,server: 104.24.144.66,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo04.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_3,server: 190.93.244.61,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_4,server: 2606:4700:8dd6:8591:ba3b:8da6:e923:59df,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo04.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_5,server: 172.64.157.27,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo04.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_6,server: 104.24.144.73,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_7,server: 190.93.244.105,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_8,server: 162.159.15.172,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_9,server: seargo.100896.xyz,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_10,server: 162.159.128.101,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_11,server: 198.41.220.125,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_12,server: 103.21.244.239,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_13,server: 162.159.7.167,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_14,server: ip.sb,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_15,server: 173.245.49.40,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo01.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_16,server: 173.245.49.232,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo04.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_17,server: 2606:4700:8dd6:c1e3:90f8:a9ab:f083:d2ab,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_18,server: 188.114.99.44,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_19,server: 2606:4700:24:2f65:a2dc:3d14:686c:9054,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo01.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_20,server: 104.24.159.141,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_21,server: 104.27.7.9,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_22,server: 190.93.246.99,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_23,server: 141.101.122.224,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_24,server: 2606:4700:83bf:5a5d:7b3d:4803:e926:266b,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo01.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_25,server: 103.21.244.47,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_26,server: 172.64.50.108,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_27,server: 103.21.244.94,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo01.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_28,server: 2606:4700:24:be34:d44e:4e96:b58f:4052,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo04.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_29,server: 162.159.22.65,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo04.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_30,server: 103.21.244.230,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo04.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_31,server: 2606:4700:24:4542:b306:9db9:de6f:7bff,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo04.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_32,server: 198.41.219.139,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_33,server: 198.41.212.157,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo04.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_34,server: 173.245.59.221,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_35,server: 2606:4700:8dd6:42cf:58a7:74ab:f37:4d67,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_36,server: 141.101.120.10,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_37,server: 108.162.196.130,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo01.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_38,server: 108.162.196.69,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo04.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_39,server: 108.162.198.165,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_40,server: 103.21.244.0,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo04.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_41,server: 2606:4700:24:ba16:2d7:b205:c587:d31f,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_42,server: 188.114.98.31,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_43,server: 172.64.107.41,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_44,server: 162.159.40.131,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_45,server: 103.21.244.247,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_46,server: 162.159.19.240,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo01.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_47,server: 104.22.32.30,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo01.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_48,server: 2606:4700:99ec:1382:18ea:13e2:5d0e:25e8,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_49,server: 172.67.204.73,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_50,server: 190.93.246.127,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_51,server: 198.41.218.152,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_52,server: 103.21.244.13,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo04.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_53,server: 104.24.10.195,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_54,server: 141.101.113.45,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_55,server: 2606:4700:24:402f:4147:bbd8:75b1:357b,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_56,server: 172.65.252.221,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_57,server: 172.64.193.175,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_58,server: 188.114.99.132,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo04.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_59,server: 2606:4700:8dd6:2da4:d48e:de32:525e:3594,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo01.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_60,server: 188.114.97.58,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_61,server: 162.159.38.202,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo01.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_62,server: 104.25.210.45,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_63,server: 103.21.244.88,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_64,server: 104.24.185.147,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo01.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_65,server: 172.67.156.239,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo01.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_66,server: 104.22.5.205,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_67,server: 172.67.152.188,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_68,server: 2606:4700:8dd6:cd2c:61fc:dd9c:c9e2:2b88,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_69,server: 104.27.197.203,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo04.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_70,server: 104.20.152.102,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_71,server: 104.24.155.42,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_72,server: 2606:4700:8dd6:1379:bb5:e095:d84d:dbb,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_73,server: 172.64.158.108,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo01.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_74,server: 104.24.63.130,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_75,server: 188.114.97.14,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_76,server: 172.67.244.112,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo02.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_77,server: 141.101.121.243,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_78,server: 2606:4700:99ec:4e45:276c:c2ec:39c:47f4,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo01.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_79,server: 198.41.220.77,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo04.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_80,server: 104.21.35.11,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo04.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_81,server: 141.101.114.154,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo04.100896.xyz},v2ray-http-upgrade: true}}
+  - {name: y2b关注Anqiqii_82,server: 172.67.99.131,port: 443,type: vless,tls: true,skip-cert-verify: false,udp: true,network: ws,uuid: dda26d4f-01d3-4ad4-80c0-f20e3eb8aa29,ws-opts: {path: /usahowweb39869,headers: {Host: seargo03.100896.xyz},v2ray-http-upgrade: true}}
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - ⚖️ 负载均衡
+      - ♻️ 自动选择
+      - y2b关注Anqiqii_58
+      - y2b关注Anqiqii_71
+      - y2b关注Anqiqii_22
+      - y2b关注Anqiqii_10
+      - y2b关注Anqiqii_78
+      - y2b关注Anqiqii_77
+      - y2b关注Anqiqii_79
+      - y2b关注Anqiqii_53
+      - y2b关注Anqiqii_44
+      - y2b关注Anqiqii_46
+      - y2b关注Anqiqii_74
+      - y2b关注Anqiqii_56
+      - y2b关注Anqiqii_42
+      - y2b关注Anqiqii_80
+      - y2b关注Anqiqii_12
+      - y2b关注Anqiqii_64
+      - y2b关注Anqiqii_61
+      - y2b关注Anqiqii_45
+      - y2b关注Anqiqii_11
+      - y2b关注Anqiqii_51
+      - y2b关注Anqiqii_30
+      - y2b关注Anqiqii_49
+      - y2b关注Anqiqii_65
+      - y2b关注Anqiqii_16
+      - y2b关注Anqiqii_38
+      - y2b关注Anqiqii_43
+      - y2b关注Anqiqii_69
+      - y2b关注Anqiqii_5
+      - y2b关注Anqiqii_19
+      - y2b关注Anqiqii_37
+      - y2b关注Anqiqii_25
+      - y2b关注Anqiqii_40
+      - y2b关注Anqiqii_62
+      - y2b关注Anqiqii_13
+      - y2b关注Anqiqii_63
+      - y2b关注Anqiqii_34
+      - y2b关注Anqiqii_55
+      - y2b关注Anqiqii_17
+      - DIRECT
+  - name: 💬 OpenAi
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - y2b关注Anqiqii_37
+      - y2b关注Anqiqii_81
+      - y2b关注Anqiqii_14
+      - y2b关注Anqiqii_66
+      - y2b关注Anqiqii_20
+      - y2b关注Anqiqii_18
+      - y2b关注Anqiqii_44
+      - y2b关注Anqiqii_70
+      - y2b关注Anqiqii_11
+      - y2b关注Anqiqii_22
+      - y2b关注Anqiqii_9
+      - y2b关注Anqiqii_2
+      - y2b关注Anqiqii_74
+      - y2b关注Anqiqii_50
+      - y2b关注Anqiqii_71
+      - DIRECT
+  - name: 📺 哔哩哔哩
+    type: select
+    proxies:
+      - DIRECT
+      - ♻️ 自动选择
+      - 🚀 节点选择
+  - name: ♻️ 自动选择
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 65
+    proxies:
+      - y2b关注Anqiqii_37
+      - y2b关注Anqiqii_81
+      - y2b关注Anqiqii_14
+      - y2b关注Anqiqii_66
+      - y2b关注Anqiqii_20
+      - y2b关注Anqiqii_18
+      - y2b关注Anqiqii_44
+      - y2b关注Anqiqii_70
+      - y2b关注Anqiqii_11
+      - y2b关注Anqiqii_22
+      - y2b关注Anqiqii_9
+      - y2b关注Anqiqii_2
+      - y2b关注Anqiqii_74
+      - y2b关注Anqiqii_50
+      - y2b关注Anqiqii_71
+  - name: ⚖️ 负载均衡
+    type: load-balance
+    url: http://www.google.com/generate_204
+    interval: 300
+    strategy: round-robin
+    proxies:
+      - y2b关注Anqiqii_37
+      - y2b关注Anqiqii_81
+      - y2b关注Anqiqii_14
+      - y2b关注Anqiqii_66
+      - y2b关注Anqiqii_20
+      - y2b关注Anqiqii_18
+      - y2b关注Anqiqii_44
+      - y2b关注Anqiqii_70
+      - y2b关注Anqiqii_11
+      - y2b关注Anqiqii_22
+      - y2b关注Anqiqii_9
+      - y2b关注Anqiqii_2
+      - y2b关注Anqiqii_74
+      - y2b关注Anqiqii_50
+      - y2b关注Anqiqii_71
+rules:
+    - 'DOMAIN,sub.xttlove.uk,DIRECT'
+    - 'DOMAIN,sptest.100896.xyz,DIRECT'
+    - 'DOMAIN-SUFFIX,emby.cn2gias.uk,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,src-emby.cn2gias.uk,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,post.cn2gias.uk,🚀 节点选择'
+    - 'DOMAIN-KEYWORD,youtube,🚀 节点选择'
+    - 'DOMAIN,youtubei.googleapis.com,🚀 节点选择'
+    - 'DOMAIN,yt3.ggpht.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,googlevideo.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,gvt2.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,withyoutube.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,youtu.be,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,youtube-nocookie.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,youtube.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,youtubeeducation.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,youtubegaming.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,youtubekids.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,yt.be,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,ytimg.com,🚀 节点选择'
+    - 'DOMAIN,p-bstarstatic.akamaized.net,📺 哔哩哔哩'
+    - 'DOMAIN,p.bstarstatic.com,📺 哔哩哔哩'
+    - 'DOMAIN,upos-bstar-mirrorakam.akamaized.net,📺 哔哩哔哩'
+    - 'DOMAIN,upos-bstar1-mirrorakam.akamaized.net,📺 哔哩哔哩'
+    - 'DOMAIN,upos-hz-mirrorakam.akamaized.net,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,acgvideo.com,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,bilibili.com,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,bilibili.tv,📺 哔哩哔哩'
+    - 'IP-CIDR,45.43.32.234/32,📺 哔哩哔哩,no-resolve'
+    - 'IP-CIDR,103.151.150.0/23,📺 哔哩哔哩,no-resolve'
+    - 'IP-CIDR,119.29.29.29/32,📺 哔哩哔哩,no-resolve'
+    - 'IP-CIDR,128.1.62.200/32,📺 哔哩哔哩,no-resolve'
+    - 'IP-CIDR,128.1.62.201/32,📺 哔哩哔哩,no-resolve'
+    - 'IP-CIDR,150.116.92.250/32,📺 哔哩哔哩,no-resolve'
+    - 'IP-CIDR,164.52.33.178/32,📺 哔哩哔哩,no-resolve'
+    - 'IP-CIDR,164.52.33.182/32,📺 哔哩哔哩,no-resolve'
+    - 'IP-CIDR,164.52.76.18/32,📺 哔哩哔哩,no-resolve'
+    - 'IP-CIDR,203.107.1.33/32,📺 哔哩哔哩,no-resolve'
+    - 'IP-CIDR,203.107.1.34/32,📺 哔哩哔哩,no-resolve'
+    - 'IP-CIDR,203.107.1.65/32,📺 哔哩哔哩,no-resolve'
+    - 'IP-CIDR,203.107.1.66/32,📺 哔哩哔哩,no-resolve'
+    - 'DOMAIN,apiintl.biliapi.net,📺 哔哩哔哩'
+    - 'DOMAIN,upos-hz-mirrorakam.akamaized.net,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,acg.tv,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,acgvideo.com,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,b23.tv,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,bigfun.cn,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,bigfunapp.cn,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,biliapi.com,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,biliapi.net,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,bilibili.com,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,bilibili.tv,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,biligame.com,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,biligame.net,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,bilivideo.cn,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,bilivideo.com,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,hdslb.com,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,im9.com,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,smtcdns.net,📺 哔哩哔哩'
+    - 'DOMAIN-SUFFIX,ext-twitch.tv,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,jtvnw.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,live-video.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,ttvnw.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,twitch-ext.rootonline.de,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,twitch.tv,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,twitchcdn.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,twitchsvc.net,🚀 节点选择'
+    - 'DOMAIN-KEYWORD,ttvnw,🚀 节点选择'
+    - 'IP-CIDR,103.53.48.0/23,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,185.42.204.0/22,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,192.108.239.0/24,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,192.16.64.0/21,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,199.9.248.0/21,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,23.160.0.0/24,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,45.113.128.0/22,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,52.223.192.0/20,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,52.223.208.0/21,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,52.223.224.0/19,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,99.181.64.0/18,🚀 节点选择,no-resolve'
+    - 'IP-CIDR6,2402:2a80::/32,🚀 节点选择,no-resolve'
+    - 'PROCESS-NAME,tv.twitch.android.app,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,20thcenturystudios.com.au,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,20thcenturystudios.com.br,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,20thcenturystudios.jp,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,abc-studios.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,abc.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,abcnews.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,abcnews.edgesuite.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,adobedtm.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,adventuresbydisney.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,babble.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,babyzone.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,bam.nr-data.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,bamgrid.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,beautyandthebeastmusical.co.uk,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,braze.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,cdn.optimizely.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,conviva.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,d9.flashtalking.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,dilcdn.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney-asia.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney-discount.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney-plus.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney-portal.my.onetrust.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney-studio.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney-studio.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.asia,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.be,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.bg,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.ca,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.ch,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.co.il,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.co.jp,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.co.kr,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.co.th,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.co.uk,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.co.za,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.com.au,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.com.br,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.com.hk,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.com.tw,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.cz,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.de,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.demdex.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.dk,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.es,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.fi,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.fr,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.gr,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.hu,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.id,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.in,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.io,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.it,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.my,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.my.sentry.io,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.nl,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.no,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.ph,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.pl,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.pt,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.ro,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.ru,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.se,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disney.sg,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneyadsales.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneyarena.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneyaulani.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneybaby.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneycareers.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneychannelonstage.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneychannelroadtrip.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneycruisebrasil.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneyenconcert.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneyiejobs.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneyinflight.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneyinternational.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneyinternationalhd.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneyjunior.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneyjuniortreataday.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneylatino.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneymagicmoments.co.il,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneymagicmoments.co.uk,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneymagicmoments.co.za,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneymagicmoments.de,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneymagicmoments.es,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneymagicmoments.fr,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneymagicmoments.gen.tr,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneymagicmoments.gr,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneymagicmoments.it,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneymagicmoments.pl,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneymagicmomentsme.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneyme.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneymeetingsandevents.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneymovieinsiders.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneymusicpromotion.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneynewseries.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneynow.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneypeoplesurveys.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneyplus.bn5x.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneyplus.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneyplus.com.ssl.sc.omtrdc.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneyredirects.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneysrivieraresort.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneystore.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneystreaming.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneysubscription.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneytickets.co.uk,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneyturkiye.com.tr,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneytvajobs.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disneyworld-go.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,dmed.technology,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,dssott.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,dtci.co,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,dtci.technology,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,edgedatg.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,espn.co.uk,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,espn.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,espn.hb.omtrdc.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,espn.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,espncdn.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,espndotcom.tt.omtrdc.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,espnqa.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,execute-api.us-east-1.amazonaws.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,go-disneyworldgo.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,go.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,js-agent.newrelic.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,marvel.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,marvel10thanniversary.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,marveldimensionofheroes.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,marvelparty.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,marvelpinball.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,marvelsdoubleagent.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,marvelspotlightplays.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,marvelsuperheroseptember.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,marvelsuperwar.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,mickey.tv,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,moviesanywhere.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,natgeomaps.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,nationalgeographic.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,nationalgeographicpartners.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,ngeo.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,nomadlandmovie.ch,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,playmation.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,shopdisney.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,shops-disney.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,sorcerersarena.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,spaindisney.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,star-brasil.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,star-latam.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,starwars.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,starwarsgalacticstarcruiser.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,starwarskids.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,streamingdisney.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,themarvelexperiencetour.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,thestationbymaker.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,thisispolaris.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,watchdisneyfe.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,watchespn.com,🚀 节点选择'
+    - 'PROCESS-NAME,com.disney.datg.videoplatforms.android.abc,🚀 节点选择'
+    - 'PROCESS-NAME,com.disney.disneyplus,🚀 节点选择'
+    - 'DOMAIN,e13252.dscg.akamaiedge.net,🚀 节点选择'
+    - 'DOMAIN,h-netflix.online-metrix.net,🚀 节点选择'
+    - 'DOMAIN,netflix.com.edgesuite.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,fast.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,flxvpn.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,netflix.ca,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,netflix.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,netflix.com.au,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,netflix.com.edgesuite.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,netflix.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,netflixdnstest0.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,netflixdnstest1.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,netflixdnstest10.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,netflixdnstest2.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,netflixdnstest3.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,netflixdnstest4.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,netflixdnstest5.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,netflixdnstest6.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,netflixdnstest7.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,netflixdnstest8.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,netflixdnstest9.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,netflixinvestor.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,netflixstudios.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,netflixtechblog.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,nflxext.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,nflximg.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,nflximg.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,nflxsearch.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,nflxso.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,nflxvideo.net,🚀 节点选择'
+    - 'DOMAIN-KEYWORD,apiproxy-device-prod-nlb-,🚀 节点选择'
+    - 'DOMAIN-KEYWORD,dualstack.apiproxy-,🚀 节点选择'
+    - 'DOMAIN-KEYWORD,dualstack.ichnaea-web-,🚀 节点选择'
+    - 'DOMAIN-KEYWORD,netflixdnstest,🚀 节点选择'
+    - 'DOMAIN,api.swiftgram.app,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,comments.app,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,contest.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,graph.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,legra.ph,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,mbrx.app,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,quiz.directory,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,stel.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,t.me,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,tdesktop.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,telega.one,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,telegra.ph,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,telegram-cdn.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,telegram.dog,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,telegram.me,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,telegram.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,telegram.space,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,telegramdownload.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,telesco.pe,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,tg.dev,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,tx.me,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,usercontent.dev,🚀 节点选择'
+    - 'DOMAIN-KEYWORD,nicegram,🚀 节点选择'
+    - 'IP-CIDR,109.239.140.0/24,🚀 节点选择'
+    - 'IP-CIDR,149.154.160.0/20,🚀 节点选择'
+    - 'IP-CIDR,5.28.192.0/18,🚀 节点选择'
+    - 'IP-CIDR,91.108.0.0/16,🚀 节点选择'
+    - 'IP-CIDR6,2001:67c:4e8::/48,🚀 节点选择'
+    - 'IP-CIDR6,2001:b28:f23c::/47,🚀 节点选择'
+    - 'IP-CIDR6,2001:b28:f23f::/48,🚀 节点选择'
+    - 'IP-CIDR6,2a0a:f280::/32,🚀 节点选择'
+    - 'PROCESS-NAME,Telegram.exe,🚀 节点选择'
+    - 'PROCESS-NAME,nekox.messenger,🚀 节点选择'
+    - 'PROCESS-NAME,org.telegram.messenger,🚀 节点选择'
+    - 'PROCESS-NAME,telegram-desktop,🚀 节点选择'
+    - 'DOMAIN,browser-intake-datadoghq.com,💬 OpenAi'
+    - 'DOMAIN,static.cloudflareinsights.com,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,ai.com,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,algolia.net,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,api.statsig.com,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,auth0.com,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,cdn.cloudflare.net,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,challenges.cloudflare.com,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,chatgpt.livekit.cloud,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,client-api.arkoselabs.com,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,events.statsigapi.net,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,featuregates.org,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,host.livekit.cloud,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,identrust.com,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,intercom.io,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,intercomcdn.com,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,launchdarkly.com,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,oaistatic.com,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,oaiusercontent.com,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,observeit.net,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,poe.com,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,segment.io,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,sentry.io,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,stripe.com,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,turn.livekit.cloud,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,bing.com,💬 OpenAi'
+    - 'DOMAIN-KEYWORD,openai,💬 OpenAi'
+    - 'IP-CIDR,24.199.123.28/32,💬 OpenAi'
+    - 'IP-CIDR,64.23.132.171/32,💬 OpenAi'
+    - 'DOMAIN-SUFFIX,services.googleapis.cn,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,xn--ngstr-lra8j.com,🚀 节点选择'
+    - 'DOMAIN,safebrowsing.urlsec.qq.com,DIRECT'
+    - 'DOMAIN,safebrowsing.googleapis.com,DIRECT'
+    - 'DOMAIN,developer.apple.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,digicert.com,🚀 节点选择'
+    - 'DOMAIN,ocsp.apple.com,🚀 节点选择'
+    - 'DOMAIN,ocsp.comodoca.com,🚀 节点选择'
+    - 'DOMAIN,ocsp.usertrust.com,🚀 节点选择'
+    - 'DOMAIN,ocsp.sectigo.com,🚀 节点选择'
+    - 'DOMAIN,ocsp.verisign.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,apple-dns.net,🚀 节点选择'
+    - 'DOMAIN,testflight.apple.com,🚀 节点选择'
+    - 'DOMAIN,sandbox.itunes.apple.com,🚀 节点选择'
+    - 'DOMAIN,itunes.apple.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,apps.apple.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,blobstore.apple.com,🚀 节点选择'
+    - 'DOMAIN,cvws.icloud-content.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,mzstatic.com,DIRECT'
+    - 'DOMAIN-SUFFIX,itunes.apple.com,DIRECT'
+    - 'DOMAIN-SUFFIX,icloud.com,DIRECT'
+    - 'DOMAIN-SUFFIX,icloud-content.com,DIRECT'
+    - 'DOMAIN-SUFFIX,me.com,DIRECT'
+    - 'DOMAIN-SUFFIX,aaplimg.com,DIRECT'
+    - 'DOMAIN-SUFFIX,cdn20.com,DIRECT'
+    - 'DOMAIN-SUFFIX,cdn-apple.com,DIRECT'
+    - 'DOMAIN-SUFFIX,akadns.net,DIRECT'
+    - 'DOMAIN-SUFFIX,akamaiedge.net,DIRECT'
+    - 'DOMAIN-SUFFIX,edgekey.net,DIRECT'
+    - 'DOMAIN-SUFFIX,mwcloudcdn.com,DIRECT'
+    - 'DOMAIN-SUFFIX,mwcname.com,DIRECT'
+    - 'DOMAIN-SUFFIX,apple.com,DIRECT'
+    - 'DOMAIN-SUFFIX,apple-cloudkit.com,DIRECT'
+    - 'DOMAIN-SUFFIX,apple-mapkit.com,DIRECT'
+    - 'DOMAIN-SUFFIX,126.com,DIRECT'
+    - 'DOMAIN-SUFFIX,126.net,DIRECT'
+    - 'DOMAIN-SUFFIX,127.net,DIRECT'
+    - 'DOMAIN-SUFFIX,163.com,DIRECT'
+    - 'DOMAIN-SUFFIX,360buyimg.com,DIRECT'
+    - 'DOMAIN-SUFFIX,36kr.com,DIRECT'
+    - 'DOMAIN-SUFFIX,acfun.tv,DIRECT'
+    - 'DOMAIN-SUFFIX,air-matters.com,DIRECT'
+    - 'DOMAIN-SUFFIX,aixifan.com,DIRECT'
+    - 'DOMAIN-KEYWORD,alicdn,DIRECT'
+    - 'DOMAIN-KEYWORD,alipay,DIRECT'
+    - 'DOMAIN-KEYWORD,taobao,DIRECT'
+    - 'DOMAIN-SUFFIX,amap.com,DIRECT'
+    - 'DOMAIN-SUFFIX,autonavi.com,DIRECT'
+    - 'DOMAIN-KEYWORD,baidu,DIRECT'
+    - 'DOMAIN-SUFFIX,bdimg.com,DIRECT'
+    - 'DOMAIN-SUFFIX,bdstatic.com,DIRECT'
+    - 'DOMAIN-SUFFIX,bilibili.com,DIRECT'
+    - 'DOMAIN-SUFFIX,bilivideo.com,DIRECT'
+    - 'DOMAIN-SUFFIX,caiyunapp.com,DIRECT'
+    - 'DOMAIN-SUFFIX,clouddn.com,DIRECT'
+    - 'DOMAIN-SUFFIX,cnbeta.com,DIRECT'
+    - 'DOMAIN-SUFFIX,cnbetacdn.com,DIRECT'
+    - 'DOMAIN-SUFFIX,cootekservice.com,DIRECT'
+    - 'DOMAIN-SUFFIX,csdn.net,DIRECT'
+    - 'DOMAIN-SUFFIX,ctrip.com,DIRECT'
+    - 'DOMAIN-SUFFIX,dgtle.com,DIRECT'
+    - 'DOMAIN-SUFFIX,dianping.com,DIRECT'
+    - 'DOMAIN-SUFFIX,douban.com,DIRECT'
+    - 'DOMAIN-SUFFIX,doubanio.com,DIRECT'
+    - 'DOMAIN-SUFFIX,duokan.com,DIRECT'
+    - 'DOMAIN-SUFFIX,easou.com,DIRECT'
+    - 'DOMAIN-SUFFIX,ele.me,DIRECT'
+    - 'DOMAIN-SUFFIX,feng.com,DIRECT'
+    - 'DOMAIN-SUFFIX,fir.im,DIRECT'
+    - 'DOMAIN-SUFFIX,frdic.com,DIRECT'
+    - 'DOMAIN-SUFFIX,g-cores.com,DIRECT'
+    - 'DOMAIN-SUFFIX,godic.net,DIRECT'
+    - 'DOMAIN-SUFFIX,gtimg.com,DIRECT'
+    - 'DOMAIN,cdn.hockeyapp.net,DIRECT'
+    - 'DOMAIN-SUFFIX,hongxiu.com,DIRECT'
+    - 'DOMAIN-SUFFIX,hxcdn.net,DIRECT'
+    - 'DOMAIN-SUFFIX,iciba.com,DIRECT'
+    - 'DOMAIN-SUFFIX,ifeng.com,DIRECT'
+    - 'DOMAIN-SUFFIX,ifengimg.com,DIRECT'
+    - 'DOMAIN-SUFFIX,ipip.net,DIRECT'
+    - 'DOMAIN-SUFFIX,iqiyi.com,DIRECT'
+    - 'DOMAIN-SUFFIX,jd.com,DIRECT'
+    - 'DOMAIN-SUFFIX,jianshu.com,DIRECT'
+    - 'DOMAIN-SUFFIX,knewone.com,DIRECT'
+    - 'DOMAIN-SUFFIX,le.com,DIRECT'
+    - 'DOMAIN-SUFFIX,lecloud.com,DIRECT'
+    - 'DOMAIN-SUFFIX,lemicp.com,DIRECT'
+    - 'DOMAIN-SUFFIX,licdn.com,DIRECT'
+    - 'DOMAIN-SUFFIX,luoo.net,DIRECT'
+    - 'DOMAIN-SUFFIX,meituan.com,DIRECT'
+    - 'DOMAIN-SUFFIX,meituan.net,DIRECT'
+    - 'DOMAIN-SUFFIX,mi.com,DIRECT'
+    - 'DOMAIN-SUFFIX,miaopai.com,DIRECT'
+    - 'DOMAIN-SUFFIX,microsoft.com,DIRECT'
+    - 'DOMAIN-SUFFIX,microsoftonline.com,DIRECT'
+    - 'DOMAIN-SUFFIX,miui.com,DIRECT'
+    - 'DOMAIN-SUFFIX,miwifi.com,DIRECT'
+    - 'DOMAIN-SUFFIX,mob.com,DIRECT'
+    - 'DOMAIN-SUFFIX,netease.com,DIRECT'
+    - 'DOMAIN-SUFFIX,office.com,DIRECT'
+    - 'DOMAIN-SUFFIX,office365.com,DIRECT'
+    - 'DOMAIN-KEYWORD,officecdn,DIRECT'
+    - 'DOMAIN-SUFFIX,oschina.net,DIRECT'
+    - 'DOMAIN-SUFFIX,ppsimg.com,DIRECT'
+    - 'DOMAIN-SUFFIX,pstatp.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qcloud.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qdaily.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qdmm.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qhimg.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qhres.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qidian.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qihucdn.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qiniu.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qiniucdn.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qiyipic.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qq.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qqurl.com,DIRECT'
+    - 'DOMAIN-SUFFIX,rarbg.to,DIRECT'
+    - 'DOMAIN-SUFFIX,ruguoapp.com,DIRECT'
+    - 'DOMAIN-SUFFIX,segmentfault.com,DIRECT'
+    - 'DOMAIN-SUFFIX,sinaapp.com,DIRECT'
+    - 'DOMAIN-SUFFIX,smzdm.com,DIRECT'
+    - 'DOMAIN-SUFFIX,snapdrop.net,DIRECT'
+    - 'DOMAIN-SUFFIX,sogou.com,DIRECT'
+    - 'DOMAIN-SUFFIX,sogoucdn.com,DIRECT'
+    - 'DOMAIN-SUFFIX,sohu.com,DIRECT'
+    - 'DOMAIN-SUFFIX,soku.com,DIRECT'
+    - 'DOMAIN-SUFFIX,speedtest.net,DIRECT'
+    - 'DOMAIN-SUFFIX,sspai.com,DIRECT'
+    - 'DOMAIN-SUFFIX,suning.com,DIRECT'
+    - 'DOMAIN-SUFFIX,taobao.com,DIRECT'
+    - 'DOMAIN-SUFFIX,tencent.com,DIRECT'
+    - 'DOMAIN-SUFFIX,tenpay.com,DIRECT'
+    - 'DOMAIN-SUFFIX,tianyancha.com,DIRECT'
+    - 'DOMAIN-SUFFIX,tmall.com,DIRECT'
+    - 'DOMAIN-SUFFIX,tudou.com,DIRECT'
+    - 'DOMAIN-SUFFIX,umetrip.com,DIRECT'
+    - 'DOMAIN-SUFFIX,upaiyun.com,DIRECT'
+    - 'DOMAIN-SUFFIX,upyun.com,DIRECT'
+    - 'DOMAIN-SUFFIX,veryzhun.com,DIRECT'
+    - 'DOMAIN-SUFFIX,weather.com,DIRECT'
+    - 'DOMAIN-SUFFIX,weibo.com,DIRECT'
+    - 'DOMAIN-SUFFIX,xiami.com,DIRECT'
+    - 'DOMAIN-SUFFIX,xiami.net,DIRECT'
+    - 'DOMAIN-SUFFIX,xiaomicp.com,DIRECT'
+    - 'DOMAIN-SUFFIX,ximalaya.com,DIRECT'
+    - 'DOMAIN-SUFFIX,xmcdn.com,DIRECT'
+    - 'DOMAIN-SUFFIX,xunlei.com,DIRECT'
+    - 'DOMAIN-SUFFIX,yhd.com,DIRECT'
+    - 'DOMAIN-SUFFIX,yihaodianimg.com,DIRECT'
+    - 'DOMAIN-SUFFIX,yinxiang.com,DIRECT'
+    - 'DOMAIN-SUFFIX,ykimg.com,DIRECT'
+    - 'DOMAIN-SUFFIX,youdao.com,DIRECT'
+    - 'DOMAIN-SUFFIX,youku.com,DIRECT'
+    - 'DOMAIN-SUFFIX,zealer.com,DIRECT'
+    - 'DOMAIN-SUFFIX,zhihu.com,DIRECT'
+    - 'DOMAIN-SUFFIX,zhimg.com,DIRECT'
+    - 'DOMAIN-SUFFIX,zimuzu.tv,DIRECT'
+    - 'DOMAIN-SUFFIX,zoho.com,DIRECT'
+    - 'DOMAIN-KEYWORD,amazon,🚀 节点选择'
+    - 'DOMAIN-KEYWORD,google,🚀 节点选择'
+    - 'DOMAIN-KEYWORD,gmail,🚀 节点选择'
+    - 'DOMAIN-KEYWORD,youtube,🚀 节点选择'
+    - 'DOMAIN-KEYWORD,facebook,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,fb.me,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,fbcdn.net,🚀 节点选择'
+    - 'DOMAIN-KEYWORD,twitter,🚀 节点选择'
+    - 'DOMAIN-KEYWORD,instagram,🚀 节点选择'
+    - 'DOMAIN-KEYWORD,dropbox,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,twimg.com,🚀 节点选择'
+    - 'DOMAIN-KEYWORD,blogspot,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,youtu.be,🚀 节点选择'
+    - 'DOMAIN-KEYWORD,whatsapp,🚀 节点选择'
+    - 'DOMAIN-KEYWORD,admarvel,REJECT'
+    - 'DOMAIN-KEYWORD,admaster,REJECT'
+    - 'DOMAIN-KEYWORD,adsage,REJECT'
+    - 'DOMAIN-KEYWORD,adsmogo,REJECT'
+    - 'DOMAIN-KEYWORD,adsrvmedia,REJECT'
+    - 'DOMAIN-KEYWORD,adwords,REJECT'
+    - 'DOMAIN-KEYWORD,adservice,REJECT'
+    - 'DOMAIN-SUFFIX,appsflyer.com,REJECT'
+    - 'DOMAIN-KEYWORD,domob,REJECT'
+    - 'DOMAIN-SUFFIX,doubleclick.net,REJECT'
+    - 'DOMAIN-KEYWORD,duomeng,REJECT'
+    - 'DOMAIN-KEYWORD,dwtrack,REJECT'
+    - 'DOMAIN-KEYWORD,guanggao,REJECT'
+    - 'DOMAIN-KEYWORD,lianmeng,REJECT'
+    - 'DOMAIN-SUFFIX,mmstat.com,REJECT'
+    - 'DOMAIN-KEYWORD,mopub,REJECT'
+    - 'DOMAIN-KEYWORD,omgmta,REJECT'
+    - 'DOMAIN-KEYWORD,openx,REJECT'
+    - 'DOMAIN-KEYWORD,partnerad,REJECT'
+    - 'DOMAIN-KEYWORD,pingfore,REJECT'
+    - 'DOMAIN-KEYWORD,supersonicads,REJECT'
+    - 'DOMAIN-KEYWORD,uedas,REJECT'
+    - 'DOMAIN-KEYWORD,umeng,REJECT'
+    - 'DOMAIN-KEYWORD,usage,REJECT'
+    - 'DOMAIN-SUFFIX,vungle.com,REJECT'
+    - 'DOMAIN-KEYWORD,wlmonitor,REJECT'
+    - 'DOMAIN-KEYWORD,zjtoolbar,REJECT'
+    - 'DOMAIN-SUFFIX,9to5mac.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,abpchina.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,adblockplus.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,adobe.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,akamaized.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,alfredapp.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,amplitude.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,ampproject.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,android.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,angularjs.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,aolcdn.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,apkpure.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,appledaily.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,appshopper.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,appspot.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,arcgis.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,archive.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,armorgames.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,aspnetcdn.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,att.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,awsstatic.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,azureedge.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,azurewebsites.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,bing.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,bintray.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,bit.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,bit.ly,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,bitbucket.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,bjango.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,bkrtx.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,blog.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,blogcdn.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,blogger.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,blogsmithmedia.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,blogspot.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,blogspot.hk,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,bloomberg.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,box.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,box.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,cachefly.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,chromium.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,cl.ly,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,cloudflare.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,cloudfront.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,cloudmagic.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,cmail19.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,cnet.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,cocoapods.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,comodoca.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,crashlytics.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,culturedcode.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,d.pr,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,danilo.to,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,dayone.me,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,db.tt,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,deskconnect.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disq.us,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disqus.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,disquscdn.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,dnsimple.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,docker.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,dribbble.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,droplr.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,duckduckgo.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,dueapp.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,dytt8.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,edgecastcdn.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,edgekey.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,edgesuite.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,engadget.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,entrust.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,eurekavpt.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,evernote.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,fabric.io,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,fast.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,fastly.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,fc2.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,feedburner.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,feedly.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,feedsportal.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,fiftythree.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,firebaseio.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,flexibits.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,flickr.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,flipboard.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,g.co,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,gabia.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,geni.us,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,gfx.ms,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,ggpht.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,ghostnoteapp.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,git.io,🚀 节点选择'
+    - 'DOMAIN-KEYWORD,github,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,globalsign.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,gmodules.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,godaddy.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,golang.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,gongm.in,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,goo.gl,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,goodreaders.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,goodreads.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,gravatar.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,gstatic.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,gvt0.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,hockeyapp.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,hotmail.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,icons8.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,ifixit.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,ift.tt,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,ifttt.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,iherb.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,imageshack.us,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,img.ly,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,imgur.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,imore.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,instapaper.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,ipn.li,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,is.gd,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,issuu.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,itgonglun.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,itun.es,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,ixquick.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,j.mp,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,js.revsci.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,jshint.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,jtvnw.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,justgetflux.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,kat.cr,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,klip.me,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,libsyn.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,linkedin.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,line-apps.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,linode.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,lithium.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,littlehj.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,live.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,live.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,livefilestore.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,llnwd.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,macid.co,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,macromedia.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,macrumors.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,mashable.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,mathjax.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,medium.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,mega.co.nz,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,mega.nz,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,megaupload.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,microsofttranslator.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,mindnode.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,mobile01.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,modmyi.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,msedge.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,myfontastic.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,name.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,nextmedia.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,nsstatic.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,nssurge.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,nyt.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,nytimes.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,omnigroup.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,onedrive.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,onenote.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,ooyala.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,openvpn.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,openwrt.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,orkut.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,osxdaily.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,outlook.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,ow.ly,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,paddleapi.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,parallels.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,parse.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,pdfexpert.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,periscope.tv,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,pinboard.in,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,pinterest.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,pixelmator.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,pixiv.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,playpcesor.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,playstation.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,playstation.com.hk,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,playstation.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,playstationnetwork.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,pushwoosh.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,rime.im,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,servebom.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,sfx.ms,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,shadowsocks.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,sharethis.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,shazam.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,skype.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,smartdns🚀 节点选择.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,smartmailcloud.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,sndcdn.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,sony.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,soundcloud.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,sourceforge.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,spotify.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,squarespace.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,sstatic.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,st.luluku.pw,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,stackoverflow.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,startpage.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,staticflickr.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,steamcommunity.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,symauth.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,symcb.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,symcd.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,tapbots.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,tapbots.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,tdesktop.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,techcrunch.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,techsmith.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,thepiratebay.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,theverge.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,time.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,timeinc.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,tiny.cc,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,tinypic.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,tmblr.co,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,todoist.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,trello.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,trustasiassl.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,tumblr.co,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,tumblr.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,tweetdeck.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,tweetmarker.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,twitch.tv,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,txmblr.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,typekit.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,ubertags.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,ublock.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,ubnt.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,ulyssesapp.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,urchin.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,usertrust.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,v.gd,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,v2ex.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,vimeo.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,vimeocdn.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,vine.co,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,vivaldi.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,vox-cdn.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,vsco.co,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,vultr.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,w.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,w3schools.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,webtype.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,wikiwand.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,wikileaks.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,wikimedia.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,wikipedia.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,wikipedia.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,windows.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,windows.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,wire.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,wordpress.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,workflowy.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,wp.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,wsj.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,wsj.net,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,xda-developers.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,xeeno.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,xiti.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,yahoo.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,yimg.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,ying.com,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,yoyo.org,🚀 节点选择'
+    - 'DOMAIN-SUFFIX,ytimg.com,🚀 节点选择'
+    - 'IP-CIDR,120.232.181.162/32,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,120.241.147.226/32,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,120.253.253.226/32,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,120.253.255.162/32,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,120.253.255.34/32,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,120.253.255.98/32,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,180.163.150.162/32,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,180.163.150.34/32,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,180.163.151.162/32,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,180.163.151.34/32,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,203.208.39.0/24,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,203.208.40.0/24,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,203.208.41.0/24,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,203.208.43.0/24,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,203.208.50.0/24,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,220.181.174.162/32,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,220.181.174.226/32,🚀 节点选择,no-resolve'
+    - 'IP-CIDR,220.181.174.34/32,🚀 节点选择,no-resolve'
+    - 'DOMAIN,injections.adguard.org,DIRECT'
+    - 'DOMAIN,local.adguard.org,DIRECT'
+    - 'DOMAIN-SUFFIX,local,DIRECT'
+    - 'IP-CIDR,127.0.0.0/8,DIRECT'
+    - 'IP-CIDR,172.16.0.0/12,DIRECT'
+    - 'IP-CIDR,192.168.0.0/16,DIRECT'
+    - 'IP-CIDR,10.0.0.0/8,DIRECT'
+    - 'IP-CIDR,17.0.0.0/8,DIRECT'
+    - 'IP-CIDR,100.64.0.0/10,DIRECT'
+    - 'IP-CIDR,224.0.0.0/4,DIRECT'
+    - 'IP-CIDR6,fe80::/10,DIRECT'
+    - 'DOMAIN-SUFFIX,cn,DIRECT'
+    - 'DOMAIN-KEYWORD,-cn,DIRECT'
+    - 'GEOIP,CN,DIRECT'
+    - 'MATCH,🚀 节点选择'
+    
